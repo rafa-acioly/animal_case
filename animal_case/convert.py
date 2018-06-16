@@ -1,3 +1,5 @@
+import re
+
 def _unpack(data):
     if isinstance(data, dict):
         return data.items()
@@ -58,11 +60,11 @@ def parse_keys(data, type='snake'):
             keys_to_snake_case(data) if type == 'snake' else keys_to_camel_case(data)
     ):
         if isinstance(value, dict):
-            formatted[key] = decode_keys(value)
+            formatted[key] = parse_keys(value)
         elif isinstance(value, list) and len(value) > 0:
             formatted[key] = []
             for _, val in enumerate(value):
-                formatted[key].append(decode_keys(val))
+                formatted[key].append(parse_keys(val))
         else:
             formatted[key] = value
     return formatted
