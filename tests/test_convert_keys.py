@@ -36,12 +36,12 @@ class ConvertKeysTest(unittest.TestCase):
         str_camel_case = 'myCamelCaseString'
         str_with_space = 'string with spaces'
 
-        self.assertEqual(convert.to_snake_case(str_camel_case), 'my_camel_case_string')
-        self.assertEqual(convert.to_snake_case(str_with_space), 'string_with_space')
+        self.assertEqual(to_snake_case(str_camel_case), 'my_camel_case_string')
+        self.assertEqual(to_snake_case(str_with_space), 'string_with_space')
 
 
     def test_convert_dict_keys_to_snake_case(self):
-        converted = convert.parse_keys(self._camel_case_dict)
+        converted = parse_keys(self._camel_case_dict)
 
         self.assertIn('first_key', converted)
         self.assertIn('second_key', converted)
@@ -58,12 +58,12 @@ class ConvertKeysTest(unittest.TestCase):
         str_snake_case = 'str_in_snake_case'
         str_with_space = 'str with spaces'
 
-        self.assertEqual(convert.to_camel_case(str_snake_case), 'strInSnakeCase')
-        self.assertEqual(convert.to_camel_case(str_with_space), 'strWithSpaces')
+        self.assertEqual(to_camel_case(str_snake_case), 'strInSnakeCase')
+        self.assertEqual(to_camel_case(str_with_space), 'strWithSpaces')
 
 
     def test_convert_dict_keys_to_camel_case(self):
-        converted = convert.parse_keys(self._snake_case_dict, type='camel')
+        converted = parse_keys(self._snake_case_dict, type='camel')
 
         self.assertIn('firstKey', converted)
         self.assertIn('secondKey', converted)
@@ -77,5 +77,5 @@ class ConvertKeysTest(unittest.TestCase):
 
     def test_invalid_option_parse_keys(self):
         data = {}
-        self.assertRaises(Exception, convert.parse_keys(data, 'invalid'))
+        self.assertRaises(Exception, parse_keys(data, 'invalid'))
 
