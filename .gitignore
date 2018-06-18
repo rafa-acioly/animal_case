@@ -107,6 +107,9 @@ venv.bak/
 bin/ 
 include/
 
+### Pipfile ###
+Pipfile.lock
+
 # Window
 Include/
 Lib/

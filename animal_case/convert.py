@@ -53,11 +53,11 @@ def parse_keys(data, types='snake'):
 
     """
     if types not in ('snake', 'camel'):
-        raise Exception("Invalid parse type, use snake or camel")
+        raise ValueError("Invalid parse type, use snake or camel")
 
     formatted = {}
     for key, value in _unpack(
-            keys_to_snake_case(data) if type == 'snake' else keys_to_camel_case(data)
+            keys_to_snake_case(data) if types == 'snake' else keys_to_camel_case(data)
     ):
         if isinstance(value, dict):
             formatted[key] = parse_keys(value, types)

@@ -30,8 +30,9 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            pip install pipenv
+            pipenv --python 3
+            pipenv install
         
       # run tests!
       # this example uses Django's built-in test-runner
@@ -41,8 +42,8 @@ jobs:
       - run:
           name: run tests
           command: |
-            . venv/bin/activate
-            python tests/test_convert_keys.py
+            pipenv shell
+            py.test -vv
 
       - store_artifacts:
           path: test-reports
