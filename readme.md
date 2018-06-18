@@ -1,6 +1,9 @@
+# Animal case convert camelCase to snakeCase and vice-versa
+
 [![CircleCI](https://circleci.com/gh/rafa-acioly/animal_case/tree/master.svg?style=svg)](https://circleci.com/gh/rafa-acioly/animal_case/tree/master)
 
-# Animal case convert camelCase to snakeCase and vice-versa
+> Most commonly used to build proxies when we need to create communication between apis
+that have different syntaxes on their endpoint.
 
 ## Usage:
 
