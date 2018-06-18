@@ -53,7 +53,7 @@ my_dict = {
     "third_key": 3
 }
 
-converted = keys_to_snake_case(my_dict)
+converted = keys_to_camel_case(my_dict)
 # output
 '''
 {
