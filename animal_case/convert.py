@@ -44,7 +44,7 @@ def keys_to_camel_case(content):
     return {to_camel_case(key): value for key, value in content.items()}
 
 
-def parse_keys(data, type='snake'):
+def parse_keys(data, types='snake'):
     """
     Convert all keys for given dict/list to snake case recursively
     the main type are 'snake' and 'camel'
@@ -52,7 +52,7 @@ def parse_keys(data, type='snake'):
     :return: dict
 
     """
-    if type not in ('snake', 'camel'):
+    if types not in ('snake', 'camel'):
         raise Exception("Invalid parse type, use snake or camel")
 
     formatted = {}
@@ -60,11 +60,11 @@ def parse_keys(data, type='snake'):
             keys_to_snake_case(data) if type == 'snake' else keys_to_camel_case(data)
     ):
         if isinstance(value, dict):
-            formatted[key] = parse_keys(value)
+            formatted[key] = parse_keys(value, types)
         elif isinstance(value, list) and len(value) > 0:
             formatted[key] = []
             for _, val in enumerate(value):
-                formatted[key].append(parse_keys(val))
+                formatted[key].append(parse_keys(val, types))
         else:
             formatted[key] = value
     return formatted
