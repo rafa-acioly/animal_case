@@ -1,4 +1,4 @@
-# Animal case convert camelCase to snakeCase and vice-versa
+# Animal case convert recursively your dict/json keys to camelCase or snakeCase.
 
 [![CircleCI](https://circleci.com/gh/rafa-acioly/animal_case/tree/master.svg?style=svg)](https://circleci.com/gh/rafa-acioly/animal_case/tree/master)
 
