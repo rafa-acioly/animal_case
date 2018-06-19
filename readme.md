@@ -5,6 +5,8 @@
 > Most commonly used to build proxies when we need to create communication between apis
 that have different syntaxes on their endpoint.
 
+Imagine that you have to make a `get` request on some endpoint and send a `post` request to another endpoint with some mutate data comming from the first request but each of there endpoints have differents `json` key sintaxies, now you have to convert all the keys recursively and the hell begins...fear no more my friend.
+
 ## Usage:
 
 ### snake case
