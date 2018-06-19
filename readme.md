@@ -9,67 +9,6 @@ Imagine that you have to make a `get` request on some endpoint and send a `post`
 
 ## Usage:
 
-### snake case
-```py
-from animal_case.convert import to_snake_case
-
-converted = to_snake_case('myRandomString')
-print(converted) # output: my_random_string
-```
-
-### camel case
-```py
-from animal_case.convert import to_camel_case
-
-converted = to_camel_case('my_random_string')
-print(converted) # output: myRandomString
-```
-
-### convert dict keys
-
-* to snake case
-```py
-from animal_case.convert import keys_to_snake_case
-
-my_dict = {
-    "firstKey": 1,
-    "secondKey": 2,
-    "thirdKey": 3
-}
-
-converted = keys_to_snake_case(my_dict)
-# output
-'''
-{
-    "first_key": 1,
-    "second_key": 2,
-    "third_key": 3
-}
-'''
-```
-
-* to camel case
-```py
-from animal_case.convert import keys_to_snake_case
-
-my_dict = {
-    "first_key": 1,
-    "second_key": 2,
-    "third_key": 3
-}
-
-converted = keys_to_camel_case(my_dict)
-# output
-'''
-{
-    "firstKey": 1,
-    "secondKey": 2,
-    "thirdKey": 3
-}
-'''
-```
-
-
 
 ### Converting dict keys recursively
 By default `parse_keys` convert keys to `snake_case`
@@ -140,4 +79,20 @@ converted = parse_keys(my_dict, type='camel')
     ]
 }
 '''
+```
+
+### snake case
+```py
+from animal_case.convert import to_snake_case
+
+converted = to_snake_case('myRandomString')
+print(converted) # output: my_random_string
+```
+
+### camel case
+```py
+from animal_case.convert import to_camel_case
+
+converted = to_camel_case('my_random_string')
+print(converted) # output: myRandomString
 ```
