@@ -1,72 +1,13 @@
-# Animal case convert camelCase to snakeCase and vice-versa
+# Animal case convert recursively your dict/json keys to camelCase or snakeCase.
 
 [![CircleCI](https://circleci.com/gh/rafa-acioly/animal_case/tree/master.svg?style=svg)](https://circleci.com/gh/rafa-acioly/animal_case/tree/master)
 
 > Most commonly used to build proxies when we need to create communication between apis
 that have different syntaxes on their endpoint.
 
+Imagine that you have to make a `get` request on some endpoint and send a `post` request to another endpoint with some mutate data comming from the first request but each of there endpoints have differents `json` key sintaxies, now you have to convert all the keys recursively and the hell begins...fear no more my friend.
+
 ## Usage:
-
-### snake case
-```py
-from animal_case.convert import to_snake_case
-
-converted = to_snake_case('myRandomString')
-print(converted) # output: my_random_string
-```
-
-### camel case
-```py
-from animal_case.convert import to_camel_case
-
-converted = to_camel_case('my_random_string')
-print(converted) # output: myRandomString
-```
-
-### convert dict keys
-
-* to snake case
-```py
-from animal_case.convert import keys_to_snake_case
-
-my_dict = {
-    "firstKey": 1,
-    "secondKey": 2,
-    "thirdKey": 3
-}
-
-converted = keys_to_snake_case(my_dict)
-# output
-'''
-{
-    "first_key": 1,
-    "second_key": 2,
-    "third_key": 3
-}
-'''
-```
-
-* to camel case
-```py
-from animal_case.convert import keys_to_snake_case
-
-my_dict = {
-    "first_key": 1,
-    "second_key": 2,
-    "third_key": 3
-}
-
-converted = keys_to_camel_case(my_dict)
-# output
-'''
-{
-    "firstKey": 1,
-    "secondKey": 2,
-    "thirdKey": 3
-}
-'''
-```
-
 
 
 ### Converting dict keys recursively
@@ -138,4 +79,20 @@ converted = parse_keys(my_dict, type='camel')
     ]
 }
 '''
+```
+
+### snake case
+```py
+from animal_case.convert import to_snake_case
+
+converted = to_snake_case('myRandomString')
+print(converted) # output: my_random_string
+```
+
+### camel case
+```py
+from animal_case.convert import to_camel_case
+
+converted = to_camel_case('my_random_string')
+print(converted) # output: myRandomString
 ```
