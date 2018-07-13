@@ -44,7 +44,7 @@ def keys_to_camel_case(content):
     return {to_camel_case(key): value for key, value in _unpack(content)}
 
 
-def parse_keys(data, types='snake'):
+def parse_keys(data={}, types='snake'):
     """
     Convert all keys for given dict/list to snake case recursively
     the main type are 'snake' and 'camel'
