@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 import pytest
 
-from ..animal_case.convert import to_camel_case, to_snake_case, parse_keys
+from ..animal_case import to_camel_case, to_snake_case, parse_keys
 
 
 class TestAnimalCase:
@@ -68,3 +68,15 @@ class TestAnimalCase:
     def test_invalid_option_parse_keys(self):
         with pytest.raises(ValueError):
             parse_keys({}, 'invalid')
+
+    @pytest.mark.parametrize('key,data_type', [
+        ('random', 'camel'),
+        (123, 'camel'),
+        (None, 'camel'),
+        ('random', 'snake'),
+        (123, 'snake'),
+        (None, 'snake'),
+    ])
+    def test_invalid_data_type(self, key, data_type):
+        with pytest.raises(TypeError):
+            parse_keys(key, data_type)
