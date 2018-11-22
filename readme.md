@@ -7,13 +7,19 @@ that have different syntaxes on their endpoint.
 
 Imagine that you have to make a `get` request on some endpoint and send a `post` request to another endpoint with some mutate data comming from the first request but each of there endpoints have differents `json` key sintaxies, now you have to convert all the keys recursively and the hell begins...fear no more my friend.
 
+## Run tests
+
+```
+python pytest -m tests/
+```
+
 ## Usage:
 
 
 ### Converting dict keys recursively
 By default `parse_keys` convert keys to `snake_case`
 ```py
-from animal_case.convert import parse_keys
+from animal_case import parse_keys
 
 my_dict = {
     "firstKey": "first value",
@@ -48,7 +54,7 @@ converted = parse_keys(my_dict)
 
 
 ```py
-from animal_case.convert import parse_keys
+from animal_case import parse_keys
 
 my_dict = {
     "first_key": "first value",
@@ -83,7 +89,7 @@ converted = parse_keys(my_dict, type='camel')
 
 ### snake case
 ```py
-from animal_case.convert import to_snake_case
+from animal_case import to_snake_case
 
 converted = to_snake_case('myRandomString')
 print(converted) # output: my_random_string
@@ -91,7 +97,7 @@ print(converted) # output: my_random_string
 
 ### camel case
 ```py
-from animal_case.convert import to_camel_case
+from animal_case import to_camel_case
 
 converted = to_camel_case('my_random_string')
 print(converted) # output: myRandomString
