@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+
 import pytest
 
 from ..animal_case import to_camel_case, to_snake_case, parse_keys
@@ -36,34 +37,29 @@ class TestAnimalCase:
             ]
         }
 
-
     def test_convert_string_to_snake_case(self):
         str_camel_case = 'myCamelCaseString'
         assert to_snake_case(str_camel_case) == 'my_camel_case_string'
-
 
     def test_convert_string_to_camel_case(self):
         str_snake_case = 'str_in_snake_case'
         assert to_camel_case(str_snake_case) == 'strInSnakeCase'
 
-
     def test_convert_dict_keys_to_snake_case(
-        self,
-        camel_case_dict,
-        snake_case_dict
+            self,
+            camel_case_dict,
+            snake_case_dict
     ):
         converted = parse_keys(camel_case_dict)
         assert converted == snake_case_dict
 
-
     def test_convert_dict_keys_to_camel_case(
-        self,
-        snake_case_dict,
-        camel_case_dict
+            self,
+            snake_case_dict,
+            camel_case_dict
     ):
         converted = parse_keys(snake_case_dict, types='camel')
         assert converted == camel_case_dict
-
 
     def test_invalid_option_parse_keys(self):
         with pytest.raises(ValueError):
@@ -80,3 +76,17 @@ class TestAnimalCase:
     def test_invalid_data_type(self, key, data_type):
         with pytest.raises(TypeError):
             parse_keys(key, data_type)
+
+    @pytest.mark.parametrize('values', [
+        [1, 2, 3], 1, 1.0, 'string', (1, 2, 3), {1, 2, 3}
+    ])
+    def test_convert_not_dict_values_to_camel_case(self, values):
+        converted = parse_keys({"first_key": values}, types="camel")
+        assert converted == {"firstKey": values}
+
+    @pytest.mark.parametrize('values', [
+        [1, 2, 3], 1, 1.0, 'string', (1, 2, 3), {1, 2, 3}
+    ])
+    def test_convert_not_dict_values_to_snake_case(self, values):
+        converted = parse_keys({"firstKey": values})
+        assert converted == {"first_key": values}

@@ -71,8 +71,10 @@ def parse_keys(data=None, types='snake'):
             formatted[key] = parse_keys(value, types)
         elif is_list(value) and len(value) > 0:
             formatted[key] = []
-            for _, val in enumerate(value):
-                formatted[key].append(parse_keys(val, types))
+            for val in value:
+                if isinstance(val, (list, dict)):
+                    val = parse_keys(val, types)
+                formatted[key].append(val)
         else:
             formatted[key] = value
     return formatted
