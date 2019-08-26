@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import pytest
 
 from ..animal_case import to_camel_case, to_snake_case, parse_keys
+from ..animal_case.types import CAMEL_CASE, SNAKE_CASE
 
 
 class TestAnimalCase:
@@ -58,7 +59,7 @@ class TestAnimalCase:
             snake_case_dict,
             camel_case_dict
     ):
-        converted = parse_keys(snake_case_dict, types='camel')
+        converted = parse_keys(snake_case_dict, types=CAMEL_CASE)
         assert converted == camel_case_dict
 
     def test_invalid_option_parse_keys(self):
@@ -81,7 +82,7 @@ class TestAnimalCase:
         [1, 2, 3], 1, 1.0, 'string', (1, 2, 3), {1, 2, 3}
     ])
     def test_convert_not_dict_values_to_camel_case(self, values):
-        converted = parse_keys({"first_key": values}, types="camel")
+        converted = parse_keys({"first_key": values}, types=CAMEL_CASE)
         assert converted == {"firstKey": values}
 
     @pytest.mark.parametrize('values', [
