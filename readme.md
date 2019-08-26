@@ -55,6 +55,7 @@ converted = parse_keys(my_dict)
 
 ```py
 from animal_case import parse_keys
+from animal_case.types import CAMEL_CASE
 
 my_dict = {
     "first_key": "first value",
@@ -69,7 +70,7 @@ my_dict = {
     ]
 }
 
-converted = parse_keys(my_dict, type='camel')
+converted = parse_keys(my_dict, types=CAMEL_CASE)
 # output
 '''
 {
